@@ -84,10 +84,7 @@ keywords: "Xusy,41xu"
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
 # Set rss to specific value if you have burned your feed already.
-rss:  false
-weibo_username: Xusy2333
-zhihu_username: Xusy2333
-github_username:  41xu
+rss:
 
 # Specify the date when the site was setup
 #since: 2015
@@ -216,8 +213,11 @@ font:
 # Social Links
 # Key is the link label showing to end users.
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
-#social:
-  #LinkLabel: Link
+social:
+  Github: https://github.com/41xu
+  Weibo:  https://weibo.com/u/6076392970
+  ZhiHu:  zhihu.com/people/zhuo-ji-dui-chang
+  
 
 
 # Social Links Icons
@@ -232,6 +232,7 @@ social_icons:
   GitHub: github
   Twitter: twitter
   Weibo: weibo
+  ZhiHu:  zhihu
 
 
 # Sidebar Avatar
