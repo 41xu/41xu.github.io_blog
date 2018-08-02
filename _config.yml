@@ -1,0 +1,51 @@
+# Site settings
+title: Xusy
+SEOTitle: Xusy
+header-img: img/background.jpg
+email: xu_sy11111@mail.dlut.edu.cn
+description: "菜鸡程序员进化！！！"
+keyword: "Xusy, Xusy2333, 41xu, python"
+url:"https://41xu.github.io"
+baseurl:""
+github_repo:"https://github.com/41xu/41xu.github.io.git"
+
+# Sidebar settings
+sidebar: true
+sidebar-about-description:"我还没想好讲啥...那就...加油吧！"
+sidebar-avatar:/img/xusy.JPG
+
+
+# SNS settings
+RSS: false
+weibo_username: Xusy2333
+zhihu_username: Xusy2333
+github_username: 41xu
+
+Disqus(https://disqus.com/)
+disqus_username:xusy2333
+
+# Analytics settings
+ga_track_id:'UA-123199984-1'
+ga_domain:xusy2333.cn
+
+# Featured Tags
+featured-tags: true
+featured-condition-size:1
+
+# Progresive Web Apps
+chrome-tab-theme-color:"#000000"
+service-worker:true
+
+#Friends
+friends:[
+	{
+	    title:"小徐的微博",
+	    href:"https://weibo.com/u/6076392970"
+	},{
+	    title:"Apple",
+	    href:"https://apple.com"
+	},{
+	    title:"Apple Developer",
+	    href:"https://developer.apple.com/"
+	}
+]
