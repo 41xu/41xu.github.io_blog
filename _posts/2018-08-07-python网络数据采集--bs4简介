@@ -1,0 +1,181 @@
+---
+title:  BeautifulSoup简单介绍
+tags:   爬虫
+---
+
+>   时间比较赶所以来不及看官方的urllib & bs4的文档了！
+>
+>   去年暑假写了简单的爬虫现在过去一整年了没怎么碰几乎都忘了！
+>
+>   被拉着参加比赛来着需要爬虫一部分工作所以来不及慢吞吞看文档自己摸索了！就抓着手里学校拿回来的书以及昨天下单的书简单看看就要直接写了！
+>
+>   爬虫不是本假期to do list的重点..所以没那么细致！不废话了直接进入正题！
+
+### get_text()函数
+简单介绍：
+
+ get_text()函数可将html文档中所有标签都清除，返回一个只包含文字的字符串，如将一些超链接，段落，标签都清除掉，只留下不带标签的文字。一般最后使用这个函数，中间尽可能地保留html文档的标签结构比较好
+
+举个例子：
+
+比如说你不使用get_text()的话，在findAll里找到的东西直接打印就是这样子的，我们做个对比
+
+```
+Anna
+Pavlovna
+the Empress
+The prince
+Anatole
+the prince
+The prince
+Anna
+Pavlovna
+Anna Pavlovna
+<span class="green">Anna
+Pavlovna Scherer</span>
+<span class="green">Empress Marya
+Fedorovna</span>
+<span class="green">Prince Vasili Kuragin</span>
+<span class="green">Anna Pavlovna</span>
+<span class="green">St. Petersburg</span>
+<span class="green">the prince</span>
+<span class="green">Anna Pavlovna</span>
+<span class="green">Anna Pavlovna</span>
+<span class="green">the prince</span>
+<span class="green">the prince</span>
+```
+
+### find() & findAll()
+
+简单介绍：
+
+通过find() 与findAll(),我们借助标签的不同属性将html过滤，查找需要的标签组
+
+接下来看看函数定义：
+```
+findAll(tag,attributes,recursive,text,limit,keywords)
+find(tag,attributes,recursive,text,keywords)
+```
+参数介绍：
+
+**tag:** 标签参数，可传一个标签名称/多个标签名称组成的{ }列表
+```
+.findAll({"h1","h2"})
+```
+**attributes:** 属性参数，用一个dictionary封装标签属性和对应属性值 
+```
+.findAll("span",{"class":{"green","red"}})
+```
+**recursive:** 递归参数，默认为True,即查找含有tag的所有子标签，子标签的子标签...这样的 就是所有内容。如果设置为False，即只查找文档的一级标签
+
+**text:** 文本参数，使用标签的文本内容匹配，而非标签属性。如像查找网页中包含"test"内容的标签，可以用这个
+```
+.findAll(text="test")
+```
+**limit:** 范围限制参数，按照网页上顺序排序获得想要的前几项结果
+
+**keyword:** 关键词参数，选择具有指定属性的标签
+```
+.findAll(id="text")
+```
+其中的 id="text" 就是keyword
+
+以上介绍完了参数，但实际上我们大多数情况下只会用到前两个参数
+
+### Some Tips About keyword
+```
+bsObj.findAll(id="text")
+bsObj.findAll("",{"id":"text"})
+```
+上面两行代码是一样的，但是如果你的关键词中含有python的关键词，如class
+这种情况下keyword中要查找的关键词在python中不能被当作变量或参数名使用的，也就是说下面这个代码会报错
+```
+bsObj.findAll(class="green")
+```
+解决方法如下
+```
+bsObj.findAll(class_="green")
+bsObj.findAll("",{"class":"green"})
+```
+增加下划线或者像第二种方法被当做了字符串处理就不会了！
+
+### BeautifulSoup中对象类型
+- BeautifulSoup对象
+
+  如bsObj
+- Tag对象
+
+  通过BS对象调用find findAll返回的 或者是直接调用子标签获得的对象就是tag对象,比如以下这样的
+ ```
+ bsObj.div.h1
+ ```
+- NavigableString对象
+
+  用于表示标签中的文字，我们可以理解成 它本身就是text的形式了 有些函数可以返回/生成这个对象而非tag对象
+- Comment对象
+
+  用来查找html文档中的注释标签 比如下面这样的
+ ```
+ <!--这是个注释-->
+ ```
+
+### 导航树
+> 当我们需要通过标签在文档中的位置查找标签，而非上述的通过find函数通过标签的名字和属性来查找，就要用到导航树了
+- 子标签
+- 后代标签
+- 兄弟标签
+
+子标签：父标签的下一级
+
+后代标签：父标签下所有级别的标签
+
+兄弟标签：就是兄弟标签..
+
+BeautifulSoup函数进行处理时都是处理的当前标签下的后代标签的，所以你想查找子标签的时候可以用 .children 标签
+```
+bsObj.find("table",{"id":"giftList"}).children
+```
+有children函数对应的也就有parent函数（parents）是寻找父标签的
+
+如果你用了descendants()函数而非children() 就会打印出find到的标签下的所有后代标签，包括一些img标签啊span标签啊这样的 看起来很乱
+
+如果你想打印兄弟tag 可以用.next_siblings
+```
+siblings=bsObj.find("table",{"id":"giftList"}).tr.next_siblings
+```
+这段代码返回中不包括选中的这个tr本身，而只返回它后面的兄弟tag，类似的也有previous_siblings这个函数可以用，返回前面的兄弟tag，类类似的还有next_sibling,previous_sibling,返回单个标签
+
+在写代码的时候我发现..一些很迷的问题..比如说
+```
+children = bsObj.find("table",{"id":"giftList"}).children
+for child in children:
+    print(child.get_text())
+```
+这段代码是不能运行的 会返回的报错是child是NavigableString类型没有get_text()函数可以用
+但是这段就可以运行..
+```
+childs = bsObj.find("table", {"id": "giftList"}).tr.children
+for child in childs:
+    print(child.get_text())
+```
+可能是和网站结构 tr下面的东西，child这两段代码中不一样导致的吧..总之很迷..
+
+又比如说一个很迷（也不能说很迷）的问题：
+
+如果网站中有一段是这样的：
+![8-7博客用.png](https://note.youdao.com/yws/res/172/WEBRESOURCE215f77bf6239d3851fa3e01c7d7ba995)
+如果我们写了这样一段代码
+```
+print(bsObj.find("img", {"src": "../img/gifts/img1.jpg"}).parent.previous_sibling.get_text())
+```
+你会发现代码的输出是$15,也就是紧邻着的上面的那个兄弟的内容，而不是this vegetable...那个大的td中的内容，很有趣呢！
+
+> 最后
+>
+> 今天大概先到这里了！后续爬虫部分还会有更新的！大概算是08-07下午开始看的书写的这个博客，然后被叫去吃饭...(●'◡'●)所以时间打的08-07啦我稍微解释一下..博客写起来也好慢啊！
+>
+> 那么加油写代码加油更新呐！
+> 最后的最后 网站评论区还没开 让我研究一下然后开评论区！
+> 联系我的话可以发邮件到xu_sy11111@mail.dlut.edu.cn（虽然没什么人能看见）以及网页版侧边栏中有我的社交软件联系方式啦(●ˇ∀ˇ●) 下面放了bs4的官方文档连接可以参考一下！睡觉啦！告辞！
+
+[bs4的官方文档！](https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html)
