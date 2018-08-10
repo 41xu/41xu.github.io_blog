@@ -72,7 +72,7 @@ plugins:
  - jekyll-feed
 
 # ---------------------------------------------------------------
-# Site Information Settings
+# Site Information Settings 
 # ---------------------------------------------------------------
 
 # Put your favicon.ico into `assets/` directory.
@@ -93,7 +93,7 @@ rss:
 authoricon: heart
 
 # Footer `powered-by` and `theme-info` copyright
-copyright: true
+copyright: false
 
 # ---------------------------------------------------------------
 # SEO Settings
@@ -236,8 +236,8 @@ social_icons:
 
 
 # Sidebar Avatar
-# in directory: /assets/images/avatar.gif
-#avatar:
+# in directory: /assets/images/xusy.JPG
+avatar:	/assets/images/xusy.JPG
 
 
 # Table Of Contents in the Sidebar
