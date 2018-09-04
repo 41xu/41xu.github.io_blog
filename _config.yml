@@ -388,9 +388,11 @@ ga_domain: auto
 
 # Disqus
 disqus:
+  layout: default
   enable: true
   shortname: Xusy2333
   count: true
+  comments: true
   # hide comments (visitors need to click to load the comments)
   # count need to be false when hide is true
   hide: true
