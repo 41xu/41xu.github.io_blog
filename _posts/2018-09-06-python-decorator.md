@@ -1,6 +1,7 @@
 ---
-title:	python中装饰与闭包
+title:	python中装饰器与闭包
 tags:	python 装饰器
+
 ---
 
 > 呵，不会写装饰器就别说自己会写python好了。
