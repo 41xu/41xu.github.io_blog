@@ -1,6 +1,6 @@
 ---
 title:  Mac上连接服务器并安装phantomjs的记录
-tags:   日志 phantomjs 爬虫 centos
+tags:	phantomjs 爬虫 centos 日志
 ---
 
 > 只是一篇普通的记录博客，防止以后连接服务器时候忘记把文件夹放哪里啦hhhhhh
