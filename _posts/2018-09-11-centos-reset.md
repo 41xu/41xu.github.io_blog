@@ -6,7 +6,7 @@ tags:	centos 踩过的坑
 
 ### 重置服务器之后的解决ssh登陆failed的问题
 
-![failed!](/img/hosts linked failed.png)
+![failed!](/img/hosts-linked-failed.png)
 
 今天晚上重置服务器之后..
 
