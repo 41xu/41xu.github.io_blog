@@ -1,6 +1,6 @@
 ---
 title:	Generator in python
-tags:	python 机器学习课产物
+tags:	python 机器学习课产物 
 ---
 
 > 机器学习及python课的辣鸡产物

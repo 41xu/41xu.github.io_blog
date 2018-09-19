@@ -1,6 +1,6 @@
 ---
 title:	python中装饰器与闭包
-tags:	python 装饰器
+tags:	python 机器学习课产物
 
 ---
 
