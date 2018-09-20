@@ -1,5 +1,5 @@
 ---
-title:	国赛前的存档准备
+title:	存档    
 tags:	数模 
 
 ---
@@ -12,6 +12,9 @@ tags:	数模
 
 [神经网络的一个包 for python](https://github.com/ameya98/GeneticAlgorithmsRepo)
 啊剩下的一些资源可以在我的github的star上找到我悄咪咪马克的东西呢！
+
+[一个机器学习的看了第一篇感觉还不错的博客系列](https://blog.csdn.net/lqf921205/article/details/78560594)
+
 --------
 > continue...
 >
