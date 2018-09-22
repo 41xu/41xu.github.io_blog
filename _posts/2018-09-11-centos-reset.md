@@ -36,5 +36,9 @@ vi hostname
 然后在hostname里添加上你想要的名字即可！一般好像都是添加自己的域名就可以了～
 ！！！当然还要记得重启服务器！！！
 
+### centos上装python
+
+[链接在这里，讲得挺好的](https://www.cnblogs.com/chenweixuan/p/6133929.html)
+
 > 以上 简单的重置服务器中的踩坑存档，欢迎留言评论～
 
