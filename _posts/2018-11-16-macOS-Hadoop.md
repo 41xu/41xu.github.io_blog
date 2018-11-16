@@ -208,13 +208,32 @@ Hadoop2 | Hadoop3
 50075 | 9864
 
 
+### 继续启动！！！
+
+由于我们刚刚到配置..这里的namenode1对应的就是我们本机localhost啦～(所以下面的web查看正常输入的URL应该是namenode1+端口的)
+
+overview查看！
+
+查看HDFS：
+
+http://localhost:50070
+
+查看YARN：
+
+http://localhost:8088
+
+查看MR启动JobHistory Server(这里暂时出了问题..让我研究一下..)
+
+http://localhost:19888
+
+
 ----
 
 在启动的时候网上还找到了其他版本的启动但是我没成功感觉就很迷不知道为啥..
 
 比如说我们可以进入到libexec这个文件夹里执行hdfs/jps/start/等等操作
 
----
+
 
 
 
