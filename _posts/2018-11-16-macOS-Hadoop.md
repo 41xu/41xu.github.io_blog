@@ -64,8 +64,6 @@ tar -zxvf hadoop-2.8.5.tar.gz
 
 这个配置文件网上找到的大部分教程都要修改..但是..我看完我下载完之后打开的默认配置感觉不用改..于是没改..
 
----
-
 2. core-site.xml
 ```
 <configuration>
@@ -79,8 +77,6 @@ tar -zxvf hadoop-2.8.5.tar.gz
 	</property>
 </configuration>
 ```
-
----
 
 3. mapred-site.xml
 这个文件实际上我下载完的后缀是.xml.template(还是啥玩意反正是后面有个后缀，被我直接修改成了.xml)
@@ -97,8 +93,6 @@ tar -zxvf hadoop-2.8.5.tar.gz
 </configuration>
 ```
 
----
-
 4. hdfs-site.xml
 ```
 <configuration>
@@ -111,7 +105,6 @@ tar -zxvf hadoop-2.8.5.tar.gz
 ```
 这里的变量dfs.replication指定了每个HDFS数据库的复制次数，通常为3，而我们要在本机建立一个伪分布式的DataNode所以这个值改成了1
 
----
 
 5. yarn-site.xml
 
