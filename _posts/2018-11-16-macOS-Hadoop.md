@@ -64,6 +64,11 @@ tar -zxvf hadoop-2.8.5.tar.gz
 
 这个配置文件网上找到的大部分教程都要修改..但是..我看完我下载完之后打开的默认配置感觉不用改..于是没改..
 
+---更新---
+
+在这个配置文件中删掉了一些export前的注释, 关于JAVA_HOME, JSVC_HOME, HADOOP_HOME, HADOOP_HEAPSIZE=1000(或者2000), HADOOP_OPTS一些的注释都被去掉了，无需添加啥别的东西
+
+
 #### core-site.xml
 ```
 <configuration>
@@ -125,6 +130,23 @@ tar -zxvf hadoop-2.8.5.tar.gz
 
 </configuration>
 ```
+
+### 添加Hadoop环境变量
+
+在~/.bash_profile中添加
+```
+# Setting path for Hadoop
+HADOOP_HOME="/Users/xusy/Documents/Hadoop/hadoop-2.8.5"
+export HADOOP_HOME
+export PATH=$PATH:HADOOP_HOME/sbin:$HADOOP_HOME/bin
+
+export LD_LIBRARY_PATH=$HADOOP_HOME/lib/native/
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native:$HADOOP_COMMON_LIB_NATIVE_DIR"
+```
+具体路径根据hadoop的安装目录决定
+
+下半部分的配置可以在上面提到的一些
 
 
 ### 启动Hadoop
