@@ -162,7 +162,7 @@ export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native:$HADOOP_COMMON_L
 ```
 ./bin/hdfs namenode -format
 ```
-格式化文件系统（对namenode进行初始化)
+格式化文件系统（对namenode进行初始化)（好像是只要初始化一次就好了就是最开始建系统的时候..之后如果每次启动你都初始化..那么是会有问题的！）
 
 接下来启动namenode & datanode （感觉就是启动dfs文件系统)
 ```
@@ -173,6 +173,11 @@ export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native:$HADOOP_COMMON_L
 ```
 ./sbin/start-yarn.sh
 ```
+启动日志管理log的histroyserver
+```
+./mr-jobhistory-daemon.sh start histroyserver
+```
+
 当然以上的命令都是在hadoop-2.8.5下面运行的
 
 想要关闭的话..
@@ -183,14 +188,15 @@ export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native:$HADOOP_COMMON_L
 
 查看当前的hadoop运行情况:
 ```
-xushiyaodeMacBook-Pro:libexec xusy$ jps
+xushiyaodeMacBook-Pro:sbin xusy$ jps
 39696 SecondaryNameNode
 39809 ResourceManager
+49810 JobHistoryServer
 39891 NodeManager
 39507 NameNode
-14375 
-40267 Jps
+69306 
 39595 DataNode
+73471 Jps
 ```
 测试一下我们能不能进入到overview界面呢！
 
