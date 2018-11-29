@@ -1,5 +1,5 @@
 ---
-title:	macOS下尝试搭建伪分布式Hadoop
+title:	Hadoop Installation on MacOS 10.14
 tags:	Hadoop
 ---
 
