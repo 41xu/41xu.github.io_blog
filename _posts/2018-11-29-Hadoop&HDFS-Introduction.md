@@ -12,8 +12,7 @@ tags:	Hadoop
 首先照例[官网](http://hadoop.apache.org/docs/r1.0.4/cn/quickstart.html)是最好的教程！
 
 > Hadoop系列文章001篇
->
-> 提示 本篇文章简单介绍了Hadoop，HDFS，Mapreduce相关概念，阅读时间或将在10分钟
+
 
 ## Hadoop概述
 
