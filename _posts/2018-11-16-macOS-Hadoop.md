@@ -166,6 +166,7 @@ export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native:$HADOOP_COMMON_L
 
 ---
 更新
+
 ---
 
 在启动Hadoop，jps之后可能会出现你的namenode没起来的这个问题，这个时候就得格式化一下namenode，具体的话👇🏿
