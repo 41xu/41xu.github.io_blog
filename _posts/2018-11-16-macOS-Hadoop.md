@@ -164,6 +164,25 @@ export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native:$HADOOP_COMMON_L
 ```
 格式化文件系统（对namenode进行初始化)（好像是只要初始化一次就好了就是最开始建系统的时候..之后如果每次启动你都初始化..那么是会有问题的！）
 
+---
+更新
+---
+
+在启动Hadoop，jps之后可能会出现你的namenode没起来的这个问题，这个时候就得格式化一下namenode，具体的话👇🏿
+
+这里的namenode format的问题：由于namenode的信息是存在了系统的tmp文件夹下的，如果你到这里看的话是能看见这些的：
+
+![tmp](/img/tmp.png)
+
+每次启动的话tmp是会清空的，我也不知道咋回事反正，虽然我在core-site.xml文件里明明定义的是tmp存在了Hadoop文件夹下...但还是有这个问题..所以就重新在我的xusy用户下面新建了一个hadoop_tmp文件夹，把上面core-site.xml里存temp的那个文件夹路径改成了
+```
+	<property>
+		<name>hadoop.tmp.dir</name>
+		<value>/Users/xusy/hadoop_tmp</value> 
+```
+然后重新format就可以了..不知道再重新启动我的电脑的时候还会不会有这个问题..如果有那就再更新一下..		
+
+
 接下来启动namenode & datanode （感觉就是启动dfs文件系统)
 ```
 ./sbin/start-dfs.sh
