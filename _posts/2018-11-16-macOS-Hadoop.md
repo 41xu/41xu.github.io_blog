@@ -3,6 +3,8 @@ title:	Hadoop Installation on MacOS 10.14
 tags:	Hadoop
 ---
 
+> 对一些配置文件作了修改并上传到了[我的github上](https://github.com/41xu/Hadoop-ClassNotes)
+
 首先照例[官网](http://hadoop.apache.org/docs/r1.0.4/cn/quickstart.html)是最好的教程！
 
 ## 环境准备
@@ -54,6 +56,25 @@ cd Hadoop
 tar -zxvf hadoop-2.8.5.tar.gz
 ```
 （实际上就是我们在终端里解压的2333）
+
+
+### 添加Hadoop环境变量
+
+在~/.bash_profile中添加
+```
+# Setting path for Hadoop
+HADOOP_HOME="/Users/xusy/Documents/Hadoop/hadoop-2.8.5"
+export HADOOP_HOME
+export PATH=$PATH:HADOOP_HOME/sbin:$HADOOP_HOME/bin
+
+export LD_LIBRARY_PATH=$HADOOP_HOME/lib/native/
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native:$HADOOP_COMMON_LIB_NATIVE_DIR"
+```
+具体路径根据hadoop的安装目录决定
+
+下半部分的配置可以在上面提到的一些
+
 接下来可以进入到我们的Hadoop目录里:
 
 /hadoop-2.8.5/etc/hadoop/
@@ -69,6 +90,24 @@ tar -zxvf hadoop-2.8.5.tar.gz
 在这个配置文件中删掉了一些export前的注释, 关于JAVA_HOME, JSVC_HOME, HADOOP_HOME, HADOOP_HEAPSIZE=1000(或者2000), HADOOP_OPTS一些的注释都被去掉了，无需添加啥别的东西
 
 
+---再来更新---
+
+在又又又又启动的时候发现跑代码的时候会有些问题..报错信息显示的是Javahome的问题..以及Hadoophome的问题..因此还是对hadoop-env.sh文件作了修改，具体添加了javahome:
+```
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home"
+export HADOOP_NAMENODE_OPTS="-Dhadoop.security.logger=${HADOOP_SECURITY_LOGGER:-INFO,RFAS} -Dhdfs.audit.logger=${HDFS_AUDIT_LOGGER:-INFO,NullAppender} $HADOOP_NAMENODE_OPTS"
+export HADOOP_DATANODE_OPTS="-Dhadoop.security.logger=ERROR,RFAS $HADOOP_DATANODE_OPTS"
+
+export HADOOP_SECONDARYNAMENODE_OPTS="-Dhadoop.security.logger=${HADOOP_SECURITY_LOGGER:-INFO,RFAS} -Dhdfs.audit.logger=${HDFS_AUDIT_LOGGER:-INFO,NullAppender} $HADOOP_SECONDARYNAMENODE_OPTS"
+
+export HADOOP_NFS3_OPTS="$HADOOP_NFS3_OPTS"
+export HADOOP_PORTMAP_OPTS="-Xmx512m $HADOOP_PORTMAP_OPTS"
+```
+具体的配置文件放到了我的 GitHub -> HadoopClassNote里～
+
+
+**同样的：**在hadoop-env.sh, mapred-env.sh, yarn-env.sh这三个文件里都要对JAVA_HOME进行添加修改
+
 #### core-site.xml
 ```
 <configuration>
@@ -81,6 +120,15 @@ tar -zxvf hadoop-2.8.5.tar.gz
 		<value>/Users/xusy/Documents/Hadoop</value>  👈🏿是自定义的放hdfs文件的目录这里我就直接放在了我的Hadoop目录里
 	</property>
 </configuration>
+```
+
+(后来由于namenode的相关信息存在了系统的tmp文件夹里，导致每次系统重启的时候都会出现配置不能成功启动，我们每次都要格式化namenode，这样就非常不ok，所以我们对这个文件稍微修改了一下)
+
+```
+	<property>
+		<name>hadoop.tmp.dir</name>
+		<value>/Users/xusy/hadoop_tmp</value> 
+	</property>
 ```
 
 #### mapred-site.xml
@@ -110,7 +158,29 @@ tar -zxvf hadoop-2.8.5.tar.gz
 ```
 这里的变量dfs.replication指定了每个HDFS数据库的复制次数，通常为3，而我们要在本机建立一个伪分布式的DataNode所以这个值改成了1
 
+为了保存hdfs的元数据和data相关文件，这里后来添加了property：
+```
+<configuration>
+	<!--伪分布式-->
+  <property>
+    <name>dfs.namenode.name.dir</name>
+    <value>/Users/xusy/Documents/Hadoop/dfs/name</value>
+  </property>
+  <property>
+    <name>dfs.datanode.data.dir</name>
+    <value>/Users/xusy/Documents/Hadoop/dfs/data</value>
+  </property>
+	<property>
+		<name>dfs.replication</name>
+		<value>1</value>
+	</property>
+  <property>
+    <name>dfs.permissions</name>
+    <value>false</value>
+  </property>
+</configuration>
 
+```
 #### yarn-site.xml
 
 ```
@@ -130,24 +200,57 @@ tar -zxvf hadoop-2.8.5.tar.gz
 
 </configuration>
 ```
-
-### 添加Hadoop环境变量
-
-在~/.bash_profile中添加
+同样的稍微做了修改
 ```
-# Setting path for Hadoop
-HADOOP_HOME="/Users/xusy/Documents/Hadoop/hadoop-2.8.5"
-export HADOOP_HOME
-export PATH=$PATH:HADOOP_HOME/sbin:$HADOOP_HOME/bin
+<configuration>
+	<property>
+		<name>yarn.nodemanager.aux-services</name>
+		<value>mapreduce_shuffle</value>
+	</property>
+  <property>
+    <name>yarn.resourcemanager.resource-tracker.address</name>
+    <value>localhost:8031</value>
+  </property>
+    <property>
+    <name>yarn.resourcemanager.address</name>
+    <value>localhost:8032</value>
+  </property>
+    <property>
+    <name>yarn.resourcemanager.admin.address</name>
+    <value>localhost:8033</value>
+  </property>
+    <property>
+    <name>yarn.resourcemanager.scheduler.address</name>
+    <value>localhost:8034</value>
+  </property>
+    <property>
+    <name>yarn.resourcemanager.webapp.address</name>
+    <value>localhost:8088</value>
+  </property>
+    <property>
+    <name>yarn.log-aggregation-enable</name>
+    <value>true</value>
+  </property>
+    <property>
+    <name>yarn.log.server.url</name>
+    <value>http://localhost:19888/jobhistory/logs/</value>
+  </property>
+<!-- Site specific YARN configuration properties -->
 
-export LD_LIBRARY_PATH=$HADOOP_HOME/lib/native/
-export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
-export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native:$HADOOP_COMMON_LIB_NATIVE_DIR"
+<!-- 集群配置-->
+  <!--      <property>
+      <name>yarn.resourcemanager.hostname</name>
+      <value>master</value>
+      </property> -->
+</configuration>
 ```
-具体路径根据hadoop的安装目录决定
 
-下半部分的配置可以在上面提到的一些
+#### log4j.properties
 
+在具体跑代码的时候会有些WARNING(但实际上你的代码并没有什么问题..)因此我们要在log4j.properties文件后追加一行内容：
+```
+log4j.logger.org.apache.hadoop.util.NativeCodeLoader=ERROR
+```
 
 ### 启动Hadoop
 
