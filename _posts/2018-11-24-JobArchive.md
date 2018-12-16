@@ -1,6 +1,6 @@
 ---
 title:	Things about Job Interview 
-tags:	日志
+tags:	日志 JobThings
 ---
 
 emmmm这个博客就记录一下找实习的过程中..笔试和面试的一些问题吧...我实在是太菜了😞
