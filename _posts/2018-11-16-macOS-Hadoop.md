@@ -296,10 +296,11 @@ log4j.logger.org.apache.hadoop.util.NativeCodeLoader=ERROR
 ```
 ./sbin/start-yarn.sh
 ```
-启动日志管理log的histroyserver
+启动日志管理log的histroyserver 
 ```
-./mr-jobhistory-daemon.sh start histroyserver
+./mr-jobhistory-daemon.sh start historyserver
 ```
+👆🏿输入了这个命令就可以在jps里看见JobHistoryServer了
 
 当然以上的命令都是在hadoop-2.8.5下面运行的
 
