@@ -3,7 +3,7 @@ title:  软件工程
 tags: 软件工程
 ---
 
-> from @code2play[田嘉豪学长](https://github.com/code2play)、@[周敬尧](https://github.com/Soulike/ClassNotes)部分笔记、@王涛软件工程PPT、@王涛重点总结
+> from @code2play[田嘉豪学长](https://github.com/code2play)、@[周敬尧](https://note.soulike.tech/)部分笔记、@王涛软件工程PPT、@王涛重点总结
 > 
 > 一份总结..
 
