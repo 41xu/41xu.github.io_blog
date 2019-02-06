@@ -67,7 +67,7 @@ defaults:
 
 # Atom feed
 feed:
-  path: atom.xml
+  path: /feed.xml
 
 # Plugins
 ## Docs: https://help.github.com/articles/configuring-jekyll-plugins/
@@ -89,7 +89,7 @@ keywords: "Xusy,41xu"
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
 # Set rss to specific value if you have burned your feed already.
-rss: /_layouts/feed.html
+rss: false
 
 # Specify the date when the site was setup
 #since: 2015
