@@ -6,7 +6,7 @@
 # Site
 title: Xusy
 subtitle:
-description:
+description: Xusy's Blog, about technique and something else.
 author: Xusy
 # Support language: de, en, fr-FR, id, ja, ko, pt-BR, pt, ru, zh-Hans, zh-hk, zh-tw
 language: zh-Hans
@@ -19,7 +19,7 @@ markdown: maruku
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com' and baseurl as '/child'
-url:
+url: xusy2333.cn
 baseurl:
 permalink: pretty
 
@@ -89,7 +89,7 @@ keywords: "Xusy,41xu"
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
 # Set rss to specific value if you have burned your feed already.
-rss:
+rss: /_layouts/feed.xml
 
 # Specify the date when the site was setup
 #since: 2015
