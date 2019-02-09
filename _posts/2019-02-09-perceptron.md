@@ -27,7 +27,7 @@ tags:	统计学习方法 机器学习
 ![感知机图片](/img/统计学习方法/1.png)
 
 这个例子里的感知机有三个输入：`x1,x2,x3`。Rosenblatt提出了一种简单的计算输出(output)的规则：他引入了权重(weight)`w1,w2,...`等实数来表示各个输入对于输出的重要程度。output到底是0还是1，由加权和$\sum_j w_j x_j$是否大于某一阈值(threshold value)决定。阈值也是一个实数，同时是神经元的一个参数。我们可以使用这样的一个式子来表示上面的过程
-$ \mbox{output} & = & \left\{ \begin{array}{ll} 0 & \mbox{if } \sum_j w_j x_j \leq \mbox{ threshold} \\ 1 & \mbox{if } \sum_j w_j x_j > \mbox{ threshold} \end{array} \right. \tag{1} $
+$ \begin{eqnarray} \mbox{output} & = & \left\{ \begin{array}{ll} 0 & \mbox{if } \sum_j w_j x_j \leq \mbox{ threshold} \\ 1 & \mbox{if } \sum_j w_j x_j > \mbox{ threshold} \end{array} \right. \tag{1}\end{eqnarray} $
 
 让我们再来重复一次：感知机是一个二元线性分类器。尽管结构简单但是感知机能够学习并解决相当复杂的问题。然而感知机的主要本质缺陷是它不能处理线性不可分问题。
 
