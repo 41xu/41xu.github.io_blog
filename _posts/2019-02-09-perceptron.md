@@ -1,9 +1,19 @@
+<head>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+            }
+        });
+    </script>
+</head>
+
 ---
 title:	Perceptron 感知机
 tags:	统计学习方法 机器学习
 ---
-
-> 转载需征得作者我本人同意并注明出处。作者联系方式在文章末尾。
 
 ## 感知机简单介绍
 
@@ -31,6 +41,8 @@ $\begin{eqnarray} \mbox{output} & = & \left\{ \begin{array}{ll} 0 & \mbox{if } \
 - [统计学习方法pdf](http://www.dgt-factory.com/uploads/2018/07/0725/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95.pdf)
 - [Neural Networks and Deep Learning, Chap1](https://hit-scir.gitbooks.io/neural-networks-and-deep-learning-zh_cn/content/chap1/c1s1.html)
 
+> 转载需征得作者我本人同意并注明出处。
+> 
 > 联系我：📧: xu_sy11111@mail.dlut.edu.cn or wx: xsy9915
 >
 > 或经科学上网后在下方评论区留言即可
