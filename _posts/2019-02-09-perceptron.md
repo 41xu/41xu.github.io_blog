@@ -1,3 +1,7 @@
+---
+title:	Perceptron 感知机
+tags:	统计学习方法 机器学习
+---
 <head>
     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="text/x-mathjax-config">
@@ -10,10 +14,7 @@
     </script>
 </head>
 
----
-title:	Perceptron 感知机
-tags:	统计学习方法 机器学习
----
+
 
 ## 感知机简单介绍
 
