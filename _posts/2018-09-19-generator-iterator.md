@@ -57,6 +57,8 @@ if end1-start1 < end-start:
 ```
 其他的关于generator的本文所涉及到的代码见[这个链接](https://github.com/41xu/41xu.github.io/blob/master/code_in_posts/generator-iterator.py)
 
+实际上generator就是一个边循环边计算的一个东西，所以当然会很快了！
+
 ## 函数中使用generator和yield关键字
 
 ### yield关键字
