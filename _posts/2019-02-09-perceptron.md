@@ -45,9 +45,11 @@ $$\begin{eqnarray} \mbox{output} = \left\{ \begin{array}{ll} 0 & \mbox{if } w\cd
 
 ## 感知机定义
 
-假设输入空间（特征空间）是$\mathcal{X} \subseteq \mathbf{R^{n}}$，输出空间是$\mathcal{Y} = \{+1, -1\}$. 输入$x\in\mathcal{X}$表示实例的特征向量，对应于输入空间（特征空间）的点；输出$y\in\mathcal{Y}表示实例的类别. 由输入空间到输出空间到如下函数
-$$\mathnormal{f(x)}=sign(w \cdot x+b)$$
-称为感知机.其中$w$和$b$为感知机模型参数，$\mathnormal{w} \subseteq \mathbf{R^{n}}$叫做权值weight或权值向量，$\mathnormal{b} \subseteq \mathbf{R^{n}}$叫做偏置bias，$w \cdot x$表示$w$和$x$的内积. sign是符号函数，
+假设输入空间（特征空间）是$\mathcal{X} \subseteq \mathbf{R^{n}}$，输出空间是$\mathcal{Y} = \{+1, -1\}$. 输入$x\in\mathcal{X}$表示实例的特征向量，对应于输入空间（特征空间）的点；输出$y\in\mathcal{Y}$表示实例的类别. 由输入空间到输出空间到如下函数
+
+$$f(x)=sign(w \cdot x+b)$$
+
+称为感知机.其中$w$和$b$为感知机模型参数，$w \subseteq \mathbf{R^{n}}$叫做权值weight或权值向量，$b \subseteq \mathbf{R^{n}}$叫做偏置bias，$w \cdot x$表示$w$和$x$的内积. sign是符号函数，
 $$\begin{equation}sign(x)=\begin{cases}+1& \text{x \geq 0}\\-1& \text{x < 0}\end{cases}\end{equation}$$
 
 
