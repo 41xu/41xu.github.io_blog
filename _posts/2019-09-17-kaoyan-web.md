@@ -6,6 +6,8 @@ tags:	考研 计网
 
 [TOC]
 
+> [嘉豪男神的笔记](https://github.com/code2play/Notes/blob/master/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C.md)
+
 ## 概论
 
 ### 网络边缘、网络核心
