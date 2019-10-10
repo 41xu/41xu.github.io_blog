@@ -83,7 +83,7 @@ plugins:
 # ---------------------------------------------------------------
 
 # Put your favicon.ico into `assets/` directory.
-favicon: /assets/xusy.ico
+favicon: /assets/xusy.JPGß
 
 # Set default keywords (Use a comma to separate)
 keywords: "Xusy,41xu"
@@ -244,7 +244,7 @@ social_icons:
 
 # Sidebar Avatar
 # in directory: /assets/images/xusy.JPG
-avatar:	/assets/images/xusy.JPG
+avatar:	/assets/images/xusy2333.ico
 
 
 # Table Of Contents in the Sidebar
