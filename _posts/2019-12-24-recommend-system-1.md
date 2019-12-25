@@ -1,5 +1,5 @@
 ---
-title:	Recommender Systems Handlbook -- 基于邻域的推荐
+title:	Recommender Systems Handbook -- 基于邻域的推荐
 tags:	Recommend System
 ---
 
@@ -43,8 +43,6 @@ tags:	Recommend System
 
 `基于物品的推荐`：根据某一用户对<u>相似于目标物品</u>（就是指被同一组用户评分且评分值相近的物品）的评分来预测该用户对目标物品的评分 
 
-`基于用户的推荐`:
-
 ### 基于邻域
 
 评价一个推荐系统的好坏可以通过预测分数来体现，在预测分数上，基于模型的要好于基于邻域的。但仅有预测的高精度不能保证用户的高效和满意的体验，推荐系统中影响用户体验因素的一个评判指标是：`serendipity惊喜度`,即帮助用户找到感兴趣但本不可能发现的物品，是新颖性概念的一个扩展。
@@ -85,8 +83,9 @@ tags:	Recommend System
 
 评估预测准确性的标准：MAE(平均绝对误差), RMAE(均方根误差)
 
-- $\mathrm{MAE(\mathit{f})}=\frac{1}{|\mathcal{R}_{test}|} \sum_{r_{ui}\in \mathcal{R_{test}}}|f(u,i)-r_{ui}|$
-- $\mathrm{RMAE(\mathit{f})}=\sqrt{\frac{1}{|\mathcal{R}_{test}|} \sum_{r_{ui}\in \mathcal{R_{test}}}(f(u,i)-r_{ui})^2}$
+$$\mathrm{MAE(\mathit{f})}=\frac{1}{|\mathcal{R}_{test}|} \sum_{r_{ui}\in \mathcal{R_{test}}}|f(u,i)-r_{ui}|$$
+
+$$\mathrm{RMAE(\mathit{f})}=\sqrt{\frac{1}{|\mathcal{R}_{test}|} \sum_{r_{ui}\in \mathcal{R_{test}}}(f(u,i)-r_{ui})^2}$$
 
 当没有可用评分信息$\mathcal{R}$时，如仅有用户购买商品的列表，那么评估预测分数的准确性很明显是不可能的。这时对于寻找最优项问题就转换为向用户推荐感兴趣列表：列表$L(u_a)$包含用户$u_a$最感兴趣的$N$项物品，即 `top-N`
 
