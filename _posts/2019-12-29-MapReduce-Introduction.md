@@ -47,7 +47,7 @@ Map/Reduce框架由一个单独的**master**`JobTracker`和每个集群节点一
 
 <img src="../img/mapreduce.png" alt="mapreduce过程" style="zoom:40%;" />
 
-##MapReduce 编程思想 
+## MapReduce 编程思想 
 
 > 通过上面的🌰，我们知道了MapReduce本质上就是普普通通的分治。但是...光是这样简单的了解好像还不太能够写代码哦..那么接下来看看编程思想吧！
 
