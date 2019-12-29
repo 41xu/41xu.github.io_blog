@@ -1,5 +1,5 @@
 ---
-Matitle：	MapReduce简单介绍+代码实现
+title：	MapReduce简单介绍+代码实现
 tag:	Hadoop
 ---
 
