@@ -23,6 +23,8 @@ tag:	Hadoop
     </script>
 </head>
 
+# MapReduce简单介绍+代码实现
+
 ## MapReduce 概述
 
 Map/Reduce是一个高性能的分布式计算框架，用于对海量数据进行并行分析和处理。
