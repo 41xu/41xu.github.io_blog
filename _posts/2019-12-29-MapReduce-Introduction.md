@@ -101,41 +101,40 @@ WordCount可以统计输入的文件夹下的多个文档中每个单词的出�
 
 可以看看这个流程图加深印象
 
-<img src="../img/wordcount.png" alt="wordoucnt" style="zoom:40%;" />
+<img src="../img/wordcount.png" alt="wordoucnt" style="zoom:40%;"/>
 
 当然你也可以到上面存放例程的位置打开.jar-> WordCount.java看看源码，文章开头的官网链接中也有相关源码介绍。
 
 Mapper👇🏼
 
 ```java
-	public static class TokenizerMapper extends Mapper<Object, Text, Text, IntWritable> {		
-			private final static IntWritable one = new IntWritable(1);
-			private Text word = new Text();
+public static class TokenizerMapper extends Mapper<Object, Text, Text, IntWritable> {		
+	private final static IntWritable one = new IntWritable(1);
+	private Text word = new Text();
 
-			public void map(Object key, Text value, Context context ) throws IOException, InterruptedException {
-	    		StringTokenizer itr = new StringTokenizer(value.toString());
-	    		while (itr.hasMoreTokens()) {
-	    			word.set(itr.nextToken());
-	    			context.write(word, one);
-	    		}
-	   	 }
+	public void map(Object key, Text value, Context context ) throws IOException, InterruptedException {StringTokenizer itr = new StringTokenizer(value.toString());
+	  while (itr.hasMoreTokens()) {
+	    word.set(itr.nextToken());
+	    context.write(word, one);
+	   }
 	}
+}
 ```
 
 Reducer👇🏼
 
 ```java
-	public static class IntSumReducer extends Reducer<Text,IntWritable,Text,IntWritable> {
-			private IntWritable result = new IntWritable();
+public static class IntSumReducer extends Reducer<Text,IntWritable,Text,IntWritable> {
+	private IntWritable result = new IntWritable();
 		
-			public void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
-				int sum = 0;
-				for (IntWritable val : values) {
-					sum += val.get();
-				}
-				result.set(sum);
-				context.write(key, result);
-	    	}
+	public void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException,InterruptedException {
+		int sum = 0;
+		for (IntWritable val : values) {
+			sum += val.get();
+		}
+		result.set(sum);
+		context.write(key, result);
+	  }
 	}
 ```
 
