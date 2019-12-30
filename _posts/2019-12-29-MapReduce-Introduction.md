@@ -43,13 +43,13 @@ Reduce:		13+16+14
 
 Map/Reduce框架由一个单独的**master**`JobTracker`和每个集群节点一个**slave**`TaskTracker`共同组成，master负责调度一个作业的所有任务，这些任务分布在不同的slave上由master监控执行。
 
-<img src="../img/mapreduce.png" alt="mapreduce过程" style="zoom:40%;" />
+![](/img/mapreduce.png)
 
 ## MapReduce 编程思想 
 
 > 通过上面的🌰，我们知道了MapReduce本质上就是普普通通的分治。但是...光是这样简单的了解好像还不太能够写代码哦..那么接下来看看编程思想吧！
 
-MapReduce操作数据的最小单位是一个**键值对**，对没错，就是你想的那个**key-value**！我们在使用MapReduce模型的时候，第一步就要将数据抽象为key-value的形式，接下来map函数会以key-value作为输入，经过你写的map函数的处理，会生成一系列新的键值对作为中间结果输出到本地。然后MapReduc这个框架会自动将中间结果按照key做聚合，并将**key相同的数据**分发给reduce函数处理，reduce函数以同样的key和对应的value作为输入处理后产生另一系列的key-value作为输出。
+MapReduce操作数据的最小单位是一个**键值对**，对没错，就是你想的那个**key-value**！我们在使用MapReduce模型的时候，第一步就要将数据抽象为key-value的形式，接下来map函数会以key-value作为输入，经过你写的map函数的处理，会生成一系列新的键值对作为中间结果输出到本地。然后MapReduc这个框架会自动将中间结果按照key做聚合，并将**key相同的数据**分发给reduce函数处理，reduce函数以同样的key和对应的value作为输入处理后产生另一系列的key-value作为输出。（更准确的说reduce得到的是一个key,然后是一个List(values)，List里是key相同的value的集合；或者说是Iterable\<value>这种形式，然后将key,Iterable\<value>作为输入进行处理）
 
 最简单的map-reduce可以理解成，几个node按照自己分到的数据，按照你写的map的功能，将数据分成有规律的map-reduce然后几个node把自己的计算结果怼给负责reduce的node，这个reduce也是按照你写的reduce的功能将同样map的数据合并合并，之后输出新的map-reduce. 当然，整个过程的reduce其实可以执行多次。
 
@@ -99,7 +99,7 @@ WordCount可以统计输入的文件夹下的多个文档中每个单词的出�
 
 可以看看这个流程图加深印象
 
-<img src="../img/wordcount.png" alt="wordoucnt" style="zoom:40%;"/>
+![](/img/wordcount.png)
 
 当然你也可以到上面存放例程的位置打开.jar-> WordCount.java看看源码，文章开头的官网链接中也有相关源码介绍。
 
@@ -110,7 +110,8 @@ public static class TokenizerMapper extends Mapper<Object, Text, Text, IntWritab
 	private final static IntWritable one = new IntWritable(1);
 	private Text word = new Text();
 
-	public void map(Object key, Text value, Context context ) throws IOException, InterruptedException {StringTokenizer itr = new StringTokenizer(value.toString());
+	public void map(Object key, Text value, Context context ) throws IOException, InterruptedException {
+    StringTokenizer itr = new StringTokenizer(value.toString());
 	  while (itr.hasMoreTokens()) {
 	    word.set(itr.nextToken());
 	    context.write(word, one);
@@ -184,8 +185,75 @@ public static class IntSumReducer extends Reducer<Text,IntWritable,Text,IntWrita
 2. 上面的job都设置好了之后，剩余的工作就是写你的Mapper和Reducer了
 
    ```java
-   
+   public static class TokenizerMapper extends Mapper<KeyIn, ValueIn, KeyOut, ValueOut>{
+     	// 一般上面的k,v常用的类型是<Object, Text, Text, IntWritable>
+  	private final static IntWritable one = new IntWritable(1); //就是先定义一下KeyOut, ValueOut
+     	private Text word = new Text();
+     	public void map(Object key, Text value, Context context)throws IOException, InterruptedException{
+         	StringTokenizer info = new StringTokenizer(value.toString()); // StringTokenizer默认用来拆分字符串
+         	while(info.hasMoreTokens()){
+             	String xxxx=info.nextToken(); //用info.nextToken处理输入的数据
+             	String xxxx=info.nextToken(); //或者什么别的方法也行，我对Java不是很熟Orz
+            		
+             	ValueOut.set(xxxx);
+             	KeyOut.set(xxxx);
+             	context.write(KeyOut, ValueOut);
+           }
+       }
+   }
    ```
-
    
+   ```java
+   public static class IntReducer extends Reducer<KeyIn, ValueIn, KeyOut, ValueOut>{ //KeyIn, ValueIn对应Mapper的输出
+     	private ValueOut=new xxxx; //如果有需要 害其实这里就根据需要自己写吧！
+     	public void reduce(Texy key, Iterable<IntWritable> values, Context context)throws IOException,InterruptedException{
+         	xxxx;
+        		xxxx; //自己定义咯
+         	for(IntWritable val:values){
+             	xxxxx;
+           }
+         	//想实现什么功能就写啥
+         	context.write(key,mean);
+       }	
+   }
+   ```
+   
+   Mapper, Reducer写完了就完事了..然后点个运行！就可以了！
+
+## 举个🌰练习一下！
+
+使用MapReduce计算平均分
+
+![](/img/practice1.png)
+
+代码俺就不放上来了，直接贴个[代码链接](https://github.com/41xu/Hadoop-ClassNotes/blob/master/Hadoop-Project/hadoopproject/src/main/java/MapReduce/GradeCal.java) 吧也蛮简单的这个练习！
+
+我的hdfs里在这里存的数据，数据长这样子
+
+```
+// 数据存在这里
+192:mapreduce xusy$ hdfs dfs -ls /data/Grade
+Found 4 items
+-rw-r--r--   1 xusy supergroup         31 2019-01-02 15:34 /data/Grade/Chinese
+-rw-r--r--   1 xusy supergroup         31 2019-01-02 15:35 /data/Grade/English
+-rw-r--r--   1 xusy supergroup         31 2019-01-02 15:34 /data/Grade/Math
+drwxr-xr-x   - xusy supergroup          0 2019-01-02 15:45 /data/Grade/output
+// 数据长这样
+192:mapreduce xusy$ hdfs dfs -cat /data/Grade/Chinese
+1001 90
+1002 85
+1003 62
+// 输出长这样
+192:mapreduce xusy$ hdfs dfs -cat /data/Grade/output/part-r-00000
+1001	80
+1002	75
+1003	78
+1004	83
+```
+
+
+
+> 先发出来占坑，等今天晚上或者什么时候会再更新一下的...！不然感觉这篇博客内容好少哦Orz
+>
+> 作者本身还蛮菜的所以如果有啥问题欢迎下方评论区留言，大家一起交流学习～
 
