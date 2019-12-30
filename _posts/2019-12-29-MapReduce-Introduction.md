@@ -1,16 +1,7 @@
 ---
-title：	MapReduce简单介绍+代码实现
-tag:	Hadoop
+title:  MapReduce简单介绍+代码实现
+tags:   Hadoop
 ---
-
-> 上一篇博客已经是一年前了...上一篇博客里简单介绍了Hadoop和HDFS
->
-> 这篇我们就来谈谈MapReduce及相关代码实现吧！
->
-> 照例附上[官网链接](http://hadoop.apache.org/docs/r1.0.4/cn/quickstart.html)
-
->Hadoop系列文章002
-
 <head>
     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="text/x-mathjax-config">
@@ -22,8 +13,15 @@ tag:	Hadoop
         });
     </script>
 </head>
+> 上一篇博客已经是一年前了...上一篇博客里简单介绍了Hadoop和HDFS
+>
+> 这篇我们就来谈谈MapReduce及相关代码实现吧！
+>
+> 照例附上[官网链接](http://hadoop.apache.org/docs/r1.0.4/cn/quickstart.html)
 
-# MapReduce简单介绍+代码实现
+>Hadoop系列文章002
+
+
 
 ## MapReduce 概述
 
