@@ -47,7 +47,7 @@ $$w_{uv}=\frac{|N(u)\cap N(v)|}{|N(u)\cup N(v)|}$$
 
 $$w_{uv}=\frac{|N(u)\cap N(v)|}{\sqrt{|N(u)||N(v)|}}$$
 
-$cos\theta \in [-1,1]$一般情况相似度在$[0,1]$所以要对余弦值进行归一化，因此得到$cos\_similarity=0.5+0.5*cos\theta$
+$cos\theta \in [-1,1]$一般情况相似度在$[0,1]$所以要对余弦值进行归一化，因此得到 $cos\_similarity=0.5+0.5*cos\theta$
 
 ```python
 # 余弦相似度计算
@@ -64,7 +64,7 @@ def cosSim(inA, inB): // inA, inB两个列向量
 
 $$w_{uv}=\frac{\sum_{i \in N(u) \cap N(v)} \frac{1}{log1+|N(i)|}}{\sqrt{|N(u)||N(v)|}}$$
 
- 通过$\frac{1}{log+|N(i)|}$惩罚了用户$u,v$共同兴趣列表中热门物品对他们相似度的影响，即将物品对流行度（比如说近期热门排行榜topxxx这种就是流行度）计入考虑，可以提升推荐结果的质量
+ 通过 $\frac{1}{log+|N(i)|}$ 惩罚了用户 $u,v$ 共同兴趣列表中热门物品对他们相似度的影响，即将物品对流行度（比如说近期热门排行榜topxxx这种就是流行度）计入考虑，可以提升推荐结果的质量
 
 ps: 可以将用户评分数据划分成train和test之后再做个k折交叉验证
 
@@ -82,7 +82,7 @@ ps: 可以将用户评分数据划分成train和test之后再做个k折交叉验
 
     惩罚了物品j的权重 -> 不就是余弦相似度Orz
 
-  - 简单🌰: ![](img/rs-example.png)
+  - 简单🌰: ![](/img/rs-example.png)
 
   - 得到物品间相似度后，可用如下公式计算用户u对物品j的感兴趣程度：
 
