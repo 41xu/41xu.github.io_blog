@@ -72,6 +72,13 @@ $$\begin{equation}sign(x)=\begin{cases}+1& \text{x \geq 0}\\-1& \text{x < 0}\end
 
 在空间里，向量可以看作一个点（原点为起始点的向量），对于分离超平面方程里的向量$x$可以看作由坐标原点到超平面任意“点”的向量
 
+
+## 对偶形式的感知机
+
+## Gram矩阵
+
+
+
 ## Reference
 
 - [wikipedia](https://zh.wikipedia.org/wiki/%E6%84%9F%E7%9F%A5%E5%99%A8)

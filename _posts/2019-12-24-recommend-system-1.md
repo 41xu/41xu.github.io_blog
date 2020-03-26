@@ -19,7 +19,7 @@ tags:	Recommend-System
 >
 > 书是图书馆随便借的，本博是Note+可能会有的代码吧Orz，可能会长期更新，善于挖坑不填坑的我也说不准233333
 
-本篇博客讲的是基于邻域的推荐方法，简单介绍一下几个推荐方法。
+本篇博客讲的是**基于邻域**的推荐方法，简单介绍一下几个推荐方法。
 ## 概述：物品推荐方法
 
 物品推荐方法可以分为两类：个性化和非个性化
@@ -118,4 +118,19 @@ $$\hat{r}_{ui}=\frac{1}{|\mathcal{N_i(u)}|}\sum_{v \in \mathcal{N_i(u)}} r_{vi}$
 $$\hat{r}_{ui}=\frac{\sum_{v \in \mathcal{N_i(u)}} w_{uv}r_{vi}}{\sum_{v \in \mathcal{N_i(u)}} |w_{uv}|}$$
 
 这里的分母其实可以再优化，用$w_{ui}^\alpha$代替，其中$\alpha>0$为放大因子，$\alpha>1$时，与$u$越接近的用户评分越重要
+
+
+
+### 基于用户的分类预测
+
+
+
+
+
+常用推荐系统数据集link
+
+- [一个汉化版博客](https://www.cnblogs.com/lijinze-tsinghua/p/10768033.html)
+- [又一个汉化版博客](https://blog.csdn.net/hellozhxy/article/details/81275133)
+- [GroupLen](https://grouplens.org/datasets/movielens/)
+- [推荐系统的专栏](https://www.jianshu.com/nb/21403842)
 

@@ -20,5 +20,9 @@ ver-0.1中定义的token类型有：`int, float, +, -, *, /, (, )`
 parser解释器，将输入的token转换成parsing tree。在这之前我们应该先定义好sample python的grammer
 
 ```
-expr:	term
+expr:	term((PLUS|MINUS) term)*
+term:	factor((MUL|DIV)factor)* 
+factor:	INT|FLOAT
 ```
+
+有点像手动定义了优先级？
