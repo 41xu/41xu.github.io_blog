@@ -244,7 +244,7 @@ social_icons:
 
 # Sidebar Avatar
 # in directory: /assets/images/xusy.JPG
-avatar:	/assets/images/xusy2333.ico
+avatar:	assets/images/xusy.JPG
 
 
 # Table Of Contents in the Sidebar
@@ -321,7 +321,7 @@ auto_excerpt:
 # Post meta display settings
 post_meta:
   item_text: true
-  created_at: true
+  created_at: false
   updated_at: false
   categories: true
 
@@ -329,7 +329,7 @@ post_meta:
 post_wordcount:
   item_text: true
   wordcount: true
-  min2read: false
+  min2read: true
   separated_meta: true
 
 # Wechat Subscriber
