@@ -1,7 +1,9 @@
 ---
-title:  百练1661: Help Jimmy
+title:  百练1661--Help Jimmy
 tags:   算法
 ---
+
+# 百练1661: Help Jimmy 
 
 > 一个普普通通但是条件有点多好绕的dp
 
