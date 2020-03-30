@@ -83,7 +83,7 @@ plugins:
 # ---------------------------------------------------------------
 
 # Put your favicon.ico into `assets/` directory.
-favicon: /assets/xusy.JPGß
+favicon: assets/xusy.ico
 
 # Set default keywords (Use a comma to separate)
 keywords: "Xusy,41xu"
