@@ -1,5 +1,5 @@
 ---
-title:	论文阅读: A Common Framework for Interactive Texture Transfer 
+title:	论文阅读：A Common Framework for Interactive Texture Transfer 
 tags:	CV CFITT 论文阅读
 ---
 
