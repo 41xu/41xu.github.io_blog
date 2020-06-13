@@ -7,6 +7,19 @@ tags:	CV CFITT 论文阅读
 >
 > 我太菜了，本文大概会先翻译一下论文理解大概意思然后讲讲代码的样子...?
 
+
+<head>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+            }
+        });
+    </script>
+</head>
+
 [原文地址](https://menyifang.github.io/projects/CFITT/CFITT.html)(👈🏿这里有paper和code)
 
 *先声明博客里的reference part不是原文里标的re，是个人贴的一些助于理解的网站，因此参考也用圆括号表示...*
